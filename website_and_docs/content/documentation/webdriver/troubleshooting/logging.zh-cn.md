@@ -30,6 +30,12 @@ Java日志并不简单直接,
 Python logs are typically created per module. You can match all submodules by referencing the top
 level module. So to work with all loggers in selenium module, you can do this:
 {{< gh-codeblock path="/examples/python/tests/troubleshooting/test_logging.py#L5" >}}
+You must also set a handler (`StreamHandler`, `FileHandler('/path/to/log')`, etc).
+For example, to see logs in the console, you can do this:
+```py
+handler = logging.StreamHandler()
+logger.addHandler(handler)
+```
   {{% /tab %}}
   {{% tab header="CSharp" %}}
 .NET logger is managed with a static class, so all access to logging is managed simply by referencing `Log` from the `OpenQA.Selenium.Internal.Logging` namespace.
