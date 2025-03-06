@@ -27,8 +27,16 @@ take a look at the [Selenium Logger project](https://github.com/titusfortner/sel
 Python logs are typically created per module. You can match all submodules by referencing the top
 level module. So to work with all loggers in selenium module, you can do this:
 {{< gh-codeblock path="/examples/python/tests/troubleshooting/test_logging.py#L5" >}}
-You must also set a handler (`StreamHandler`, `FileHandler('/path/to/log')`, etc).
-For example, to see logs in the console, you can do this:
+You must also create and add a log handler (`StreamHandler`, `FileHandler`, etc).
+
+To save logs to a file, you can do this:
+```py
+log_path = '/path/to/log'
+handler = logging.FileHandler(log_path)
+logger.addHandler(handler)
+```
+
+To display logs in the console, you can do this:
 ```py
 handler = logging.StreamHandler()
 logger.addHandler(handler)
